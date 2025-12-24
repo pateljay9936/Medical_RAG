@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: medical_chatbot
+Version: 0.0.0
+Author: Jay Patel
+Author-email: pateljay9936@gmail.com
+Requires-Python: >=3.10
+Dynamic: author
+Dynamic: author-email
+Dynamic: requires-python

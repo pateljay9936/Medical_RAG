@@ -34,6 +34,9 @@ class Config:
     RETRIEVAL_K = 3
     SEARCH_TYPE = "similarity"
 
+
+    # Validation method
+
     @classmethod
     def validate(cls):
         """Validate that all required configuration is present."""

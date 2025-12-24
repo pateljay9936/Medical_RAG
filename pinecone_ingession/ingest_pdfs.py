@@ -9,7 +9,7 @@ from src.helper import download_embeddings
 
 DATA_DIR = "data"
 
-
+# Main ingestion function 
 
 def ingest_pdfs():
     print("📄 Loading all PDFs in data folder...")
@@ -38,18 +38,18 @@ def ingest_pdfs():
 
     print(f"✂️ Split into {len(chunks)} chunks")
 
-    # Embeddings
+    # Embeddings model
     print("🔤 Loading embedding model...")
     embeddings = download_embeddings()
 
-    # Pinecone
+    # Pinecone Vector Store
     print("🌲 Connecting to Pinecone...")
     vectorstore = PineconeVectorStore.from_existing_index(
         index_name=Config.PINECONE_INDEX_NAME,
         embedding=embeddings
     )
 
-    # Upload
+    # Upload to Pinecone
     print("🚀 Uploading vectors to Pinecone...")
     vectorstore.add_documents(chunks)
 

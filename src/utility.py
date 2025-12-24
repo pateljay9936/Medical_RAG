@@ -5,6 +5,7 @@ import re
 from typing import Tuple
 
 
+
 class QueryClassifier:
     """Classify queries to determine if retrieval is needed"""
 

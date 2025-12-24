@@ -14,9 +14,13 @@ from langchain_community.chat_message_histories import ChatMessageHistory
 from src.prompt import system_prompt
 import uuid
 
+# Validate configuration on startup
+
 
 Config.validate()
 
+
+# Load API keys and configurations
 
 PINECONE_API_KEY = Config.PINECONE_API_KEY
 GEMINI_API_KEY = Config.GEMINI_API_KEY

@@ -5,7 +5,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from src.config import Config
 
 
-# Function: Load the pdf files from "data" dir
+# Function: Load the pdf files from "data" directory
 def load_pdf_files(data):
     loader = DirectoryLoader(data, glob="*.pdf", loader_cls=PyPDFLoader)
 
@@ -13,7 +13,7 @@ def load_pdf_files(data):
     return documents
 
 
-# Function: Filter the Documents
+# Function: Filter the Documents to minimal information
 def filter_to_minimal_docs(docs: list[Document]) -> list[Document]:
     """
     input: The list of Document
@@ -29,14 +29,14 @@ def filter_to_minimal_docs(docs: list[Document]) -> list[Document]:
     return minimal_docs
 
 
-# Function: Perfrom Text Splitting
+# Function: Perfrom Text Splitting on Documents
 def text_split(minimal_docs):
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=20)
     texts_chunk = text_splitter.split_documents(minimal_docs)
     return texts_chunk
 
 
-# Function: Download embedding model
+# Function: Download embedding model 
 def download_embeddings():
     """
     Downlaod and return the HuggingFace embeddings model.

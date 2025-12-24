@@ -20,33 +20,6 @@ The system is intentionally designed with **strict safety constraints**:
 
 ---
 
-## 🧠 High-Level Architecture
-
-This project follows a **production-grade RAG architecture**, clearly separating ingestion and inference.
-
-```mermaid
-flowchart TB
-
-    subgraph Offline_One_Time["Offline Phase (One-Time Ingestion)"]
-        A[Medical Documents (PDFs)] --> B[PDF Loader]
-        B --> C[Text Chunking]
-        C --> D[Embedding Model (HuggingFace)]
-        D --> E[Pinecone Vector Index]
-    end
-
-    subgraph Online_Runtime["Online Phase (Runtime Inference)"]
-        U[User Query] --> Q[Query Classifier]
-        Q -->|Medical Query| R[Pinecone Retriever]
-        R --> CXT[Retrieved Context]
-        CXT --> LLM[LLM (Google Gemini)]
-        LLM --> S[Streaming Response (SSE)]
-    end
-
-    E --> R
-```
-
----
-
 ## 📦 Project Phases
 
 ### Phase 1: Pinecone Index Setup (Required – One Time)
